@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { PetType } from '../App'
 
 export function Landing() {
@@ -40,7 +41,8 @@ console.log('setPetList', setPetList)
           {petList.map(function (pet) {
             return (
             <>
-              <li>{pet.name}</li>
+            <Link to={`./${pet.id}`}><li>{pet.name}</li></Link>
+              
               <li>{pet.birthday}</li>
               <li>{pet.hungerLevel}</li>
               <li>{pet.happinessLevel}</li>
