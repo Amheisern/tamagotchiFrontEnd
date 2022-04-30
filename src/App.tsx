@@ -3,6 +3,16 @@ import { Route, Routes } from 'react-router'
 import { Landing } from './pages/Landing'
 import { PetDetails } from './pages/PetDetails'
 
+export type PetType = {
+  id: number | undefined
+  name: string
+  birthday: string
+  hungerLevel: number
+  happinessLevel: number
+  lastInteractedWithDate: string| undefined
+  isDead: boolean
+}
+
 export function App() {
   return <div>
     <header>
