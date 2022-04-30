@@ -16,26 +16,12 @@ export function Landing() {
         
       }
     }
-  // async function fetchPets() {
-  //   const response = await fetch(
-  //     'https://lodashtamagotchi.herokuapp.com/api/Pets'
-  //   )
-  //   if (response.ok) {
-  //     const {data} = await response.json()
-  //     setPetList(data)
-  //     console.log('pets', data)
-  //   }
-  // }
   fetchPets()
 }
 useEffect(loadAllPets, [])
 console.log('loadAllPets', loadAllPets)
 console.log('setPetList', setPetList)
 
-{/* <li>{pet.name}</li>
-<li>{pet.birthday}</li>
-<li>{pet.hungerLevel}</li>
-<li>{pet.happinessLevel}</li> */}
   return (
     <>
       <div>
@@ -45,6 +31,9 @@ console.log('setPetList', setPetList)
             return (
             <>
               <li>{pet.name}</li>
+              <li>{pet.birthday}</li>
+              <li>{pet.hungerLevel}</li>
+              <li>{pet.happinessLevel}</li>
             </>
             )
           })}
