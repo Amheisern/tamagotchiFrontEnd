@@ -1,22 +1,34 @@
-import React, { useState } from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { PetType } from '../App'
 
 export function Landing() {
   const [petList, setPetList] = useState<PetType[]>([])
 
   function loadAllPets() {
-  async function fetchPets() {
-    const response = await fetch(
-      'https://lodashtamagotchi.herokuapp.com/api/Pets'
-    )
-    if (response.ok) {
-      const {data} = await response.json()
-      setPetList(data)
-      console.log('pets', data)
+    async function fetchPets() {
+      const response = await axios.get(
+        'https://lodashtamagotchi.herokuapp.com/api/Pets'
+      )
+      if (response.status === 200) {
+        setPetList(response.data)
+        console.log(response.data);
+        
+      }
     }
-  }
+  // async function fetchPets() {
+  //   const response = await fetch(
+  //     'https://lodashtamagotchi.herokuapp.com/api/Pets'
+  //   )
+  //   if (response.ok) {
+  //     const {data} = await response.json()
+  //     setPetList(data)
+  //     console.log('pets', data)
+  //   }
+  // }
   fetchPets()
 }
+useEffect(loadAllPets, [])
 console.log('loadAllPets', loadAllPets)
 console.log('setPetList', setPetList)
 
@@ -28,22 +40,17 @@ console.log('setPetList', setPetList)
     <>
       <div>
         <h1>List of Pets</h1>
-        <h2>{setPetList.length} pets</h2>
-        <ul>
+        <h2>
           {petList.map(function (pet) {
             return (
-              <li key={pet.id}>
-                {pet.name}
-                <br />
-                {pet.birthday}
-                <br />
-                {pet.hungerLevel}
-                <br />
-                {pet.happinessLevel}
-              </li>
+            <>
+              <li>{pet.name}</li>
+            </>
             )
-          }
-          )}
+          })}
+        </h2>
+        <ul>
+          {petList.length}
         </ul>
       </div>
     </>
