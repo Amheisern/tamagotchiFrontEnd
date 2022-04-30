@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React from 'react'
 import { useNavigate, useParams } from 'react-router'
 
@@ -20,5 +21,6 @@ export function PetDetails() {
       Pet ID:
       {params.name}
     </p>
+    <button onClick={deletePet}>Delete</button>
   </div>
 }
