@@ -41,7 +41,7 @@ console.log('setPetList', setPetList)
           {petList.map(function (pet) {
             return (
             <>
-            <Link to={`./${pet.id}`}><li>{pet.name}</li></Link>
+            <Link to={`./Pets/${pet.id}`}><li>{pet.name}</li></Link>
               
               <li>{pet.birthday}</li>
               <li>{pet.hungerLevel}</li>

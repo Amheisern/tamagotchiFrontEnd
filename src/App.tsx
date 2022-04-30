@@ -1,10 +1,11 @@
 import React from 'react'
 import { Route, Routes } from 'react-router'
+import { Link } from 'react-router-dom'
 import { Landing } from './pages/Landing'
 import { PetDetails } from './pages/PetDetails'
 
 export type PetType = {
-  id: number | undefined
+  id: string
   name: string
   birthday: string
   hungerLevel: number
@@ -14,14 +15,17 @@ export type PetType = {
 }
 
 export function App() {
-  return <div>
-    <header>
-      <h1>Tamagotchi</h1>
-    </header>
-    <Routes>
-      <Route path="/" element={<Landing />} />
-      <Route path="/:Id" element={<PetDetails />} />
-    </Routes>
-    
-     </div>
+  return (
+    <div>
+      <header>
+        <Link to="/">
+          <h1>Tamagotchi</h1>
+        </Link>
+      </header>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/Pets/:Id" element={<PetDetails />} />
+      </Routes>
+    </div>
+  )
 }
