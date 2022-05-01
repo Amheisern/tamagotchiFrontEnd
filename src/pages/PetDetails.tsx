@@ -53,6 +53,7 @@ console.log('petDetails', petDetails);
     </p>
     <p>
     name: {petDetails.name}
+    hunger: {petDetails.hungerLevel}
     </p>
     <button onClick={deletePet}>Delete Pet</button>
   </div>
