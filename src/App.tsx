@@ -24,7 +24,9 @@ export function App() {
       </header>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/Pets/:Id" element={<PetDetails />} />
+        <Route path="/Pets/:id" element={<PetDetails />} />
+        <Route path="*">
+        </Route>
       </Routes>
     </div>
   )
