@@ -6,7 +6,8 @@ import { PetType } from '../App'
 
 export function PetDetails() {
   const history = useNavigate()
-  const params = useParams<{id: string}>()
+  const params = useParams<{id: string ; actions: 'Playtimes' | 'Feedings' | 'Scoldings'}>()
+  
   const [petDetails, setPetDetails] = useState<PetType>
   ({
   id:  undefined!,
@@ -17,7 +18,10 @@ export function PetDetails() {
   lastInteractedWithDate: undefined,
   isDead: false,
   })
-  
+  const [petHunger, setPetHunger] = useState<PetType>()
+  const [petPlay, setPetPlay] = useState<PetType>()
+  const [petScold, setPetScold] = useState<PetType>()
+
   useEffect(() => {
     async function fetchPetDetails() {
       const response = await axios.get(
@@ -38,6 +42,34 @@ export function PetDetails() {
             history('/')
           }
         }
+        if (!petDetails.id) {
+          return null
+        }
+
+ async function feedPet() {
+  const response = await axios.post(
+    `https://lodashtamagotchi.herokuapp.com/api/Pets/${params.id}/Feedings`
+  )
+  if (response.status === 200) {
+    setPetHunger(response.data)
+  }
+}
+async function playWithPet() {
+  const response = await axios.post(
+    `https://lodashtamagotchi.herokuapp.com/api/Pets/${params.id}/Playtimes`
+  )
+  if (response.status === 200) {
+    setPetPlay(response.data)
+  }
+}
+async function scoldPet() {
+  const response = await axios.post(
+    `https://lodashtamagotchi.herokuapp.com/api/Pets/${params.id}/Scoldings`
+  )
+  if (response.status === 200) {
+    setPetScold(response.data)
+  }
+}
 
 // useEffect(loadPetDetails, [ params.id ])
 console.log('setPetDetails', setPetDetails);
@@ -56,5 +88,8 @@ console.log('petDetails', petDetails);
     hunger: {petDetails.hungerLevel}
     </p>
     <button onClick={deletePet}>Delete Pet</button>
+    <button onClick={feedPet}>{petHunger}</button>
+    <button onClick={playWithPet}>{petPlay}</button>
+    <button onClick={scoldPet}>{petScold}</button>
   </div>
 }
