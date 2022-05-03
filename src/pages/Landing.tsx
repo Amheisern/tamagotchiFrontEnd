@@ -50,9 +50,6 @@ console.log('setPetList', setPetList)
             )
           })}
         </h2>
-        <ul>
-          {petList.length}
-        </ul>
         <form
           onSubmit={function (event) {
             event.preventDefault()

@@ -32,7 +32,7 @@ export function PetDetails() {
       }
     }
     fetchPetDetails()
-  }, [params.id])
+  }, [params.id] )
   async function deletePet() {
     const response = await axios.delete(
       `https://lodashtamagotchi.herokuapp.com/api/Pets/${params.id}`
@@ -59,6 +59,7 @@ export function PetDetails() {
     )
     if (response.status === 200) {
       setPetPlay(response.data)
+      
     }
   }
   async function scoldPet() {
@@ -69,7 +70,6 @@ export function PetDetails() {
       setPetScold(response.data)
     }
   }
-
   // useEffect(loadPetDetails, [ params.id ])
   console.log('setPetDetails', setPetDetails)
   console.log(params.id)
