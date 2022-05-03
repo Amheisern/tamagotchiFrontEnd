@@ -37,7 +37,7 @@ export function PetDetails() {
     const response = await axios.delete(
       `https://lodashtamagotchi.herokuapp.com/api/Pets/${params.id}`
     )
-    if (response.status === 204) {
+    if (response.status === 200) {
       history('/')
     }
   }
