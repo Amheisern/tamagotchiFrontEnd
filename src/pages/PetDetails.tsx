@@ -95,7 +95,6 @@ export function PetDetails() {
       <p>name: {petDetails.name}</p>
       <p>
         hunger: {petDetails.hungerLevel}
-        {petHunger}
       </p>
       <p>happiness: {petDetails.happinessLevel}</p>
 
