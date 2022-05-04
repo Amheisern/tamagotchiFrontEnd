@@ -42,11 +42,12 @@ console.log('setPetList', setPetList)
             return (
             <>
             <Link to={`./Pets/${pet.id}`}><li>{pet.name}</li></Link>
-              
+              <ul>
               <li>{pet.birthday}</li>
               <li>{pet.hungerLevel}</li>
               <li>{pet.happinessLevel}</li>
-            </>
+           </ul> 
+           </>
             )
           })}
         </h2>

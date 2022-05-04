@@ -25,8 +25,7 @@ export function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/Pets/:id" element={<PetDetails />} />
-        <Route path="*">
-        </Route>
+        <Route path="*"/>
       </Routes>
     </div>
   )

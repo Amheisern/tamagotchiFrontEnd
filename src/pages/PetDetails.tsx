@@ -17,9 +17,9 @@ export function PetDetails() {
     lastInteractedWithDate: undefined,
     isDead: false,
   })
-  const [petHunger, setPetHunger] = useState<PetType>()
-  const [petPlay, setPetPlay] = useState<PetType>()
-  const [petScold, setPetScold] = useState<PetType>()
+  const [petHunger, setPetHunger] = useState<number>()
+  const [petPlay, setPetPlay] = useState<number>()
+  const [petScold, setPetScold] = useState<number>()
 
   useEffect(() => {
     async function fetchPetDetails() {
@@ -28,11 +28,12 @@ export function PetDetails() {
       )
       if (response.status === 200) {
         setPetDetails(response.data)
-        console.log(response.data)
+        // console.log(response.data)
       }
     }
     fetchPetDetails()
-  }, [params.id] )
+  }, [params.id])
+
   async function deletePet() {
     const response = await axios.delete(
       `https://lodashtamagotchi.herokuapp.com/api/Pets/${params.id}`
@@ -41,16 +42,27 @@ export function PetDetails() {
       history('/')
     }
   }
-  if (!petDetails.id) {
-    return null
+  async function updatePetLevels() {
+    const response = await axios.get(
+      `https://lodashtamagotchi.herokuapp.com/api/Pets/${params.id}`,
+    )
+    if (response.status === 200) {
+      setPetDetails(response.data)
+      setPetHunger(response.data.hungerLevel)
+      setPetPlay(response.data.happinessLevel)
+      setPetScold(response.data.happinessLevel)
+    }
   }
+
+  // useEffect(updatePetLevels, [petHunger, petPlay, petScold])
 
   async function feedPet() {
     const response = await axios.post(
       `https://lodashtamagotchi.herokuapp.com/api/Pets/${params.id}/Feedings`
     )
     if (response.status === 200) {
-      setPetHunger(response.data)
+      setPetHunger(response.data.hungerLevel)
+      updatePetLevels()
     }
   }
   async function playWithPet() {
@@ -58,8 +70,8 @@ export function PetDetails() {
       `https://lodashtamagotchi.herokuapp.com/api/Pets/${params.id}/Playtimes`
     )
     if (response.status === 200) {
-      setPetPlay(response.data)
-      
+      setPetPlay(response.data.happinessLevel)
+      updatePetLevels()
     }
   }
   async function scoldPet() {
@@ -67,27 +79,30 @@ export function PetDetails() {
       `https://lodashtamagotchi.herokuapp.com/api/Pets/${params.id}/Scoldings`
     )
     if (response.status === 200) {
-      setPetScold(response.data)
+      setPetScold(response.data.happinessLevel)
+      updatePetLevels()
     }
   }
-  // useEffect(loadPetDetails, [ params.id ])
-  console.log('setPetDetails', setPetDetails)
-  console.log(params.id)
-  console.log('petDetails', petDetails)
+
+  if (!petDetails.id) {
+    return null
+  }
 
   return (
     <div>
       <h1>Pet Details</h1>
       <p>pet id: {params.id!}</p>
+      <p>name: {petDetails.name}</p>
       <p>
-        name: {petDetails.name}
         hunger: {petDetails.hungerLevel}
-        happiness: {petDetails.happinessLevel}
+        {petHunger}
       </p>
+      <p>happiness: {petDetails.happinessLevel}</p>
+
       <button onClick={deletePet}>Delete Pet</button>
-      <button onClick={feedPet}>Feed pet{petHunger}</button>
-      <button onClick={playWithPet}>Play with pet{petPlay}</button>
-      <button onClick={scoldPet}>Scold pet{petScold}</button>
+      <button onClick={feedPet}>Feed pet</button>
+      <button onClick={playWithPet}>Play with pet</button>
+      <button onClick={scoldPet}>Scold pet</button>
     </div>
   )
 }
