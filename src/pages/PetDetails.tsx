@@ -44,7 +44,7 @@ export function PetDetails() {
   }
   async function updatePetLevels() {
     const response = await axios.get(
-      `https://lodashtamagotchi.herokuapp.com/api/Pets/${params.id}`,
+      `https://lodashtamagotchi.herokuapp.com/api/Pets/${params.id}`
     )
     if (response.status === 200) {
       setPetDetails(response.data)
@@ -83,6 +83,9 @@ export function PetDetails() {
       updatePetLevels()
     }
   }
+  console.log(petHunger)
+  console.log(petPlay)
+  console.log(petScold)
 
   if (!petDetails.id) {
     return null
@@ -93,9 +96,7 @@ export function PetDetails() {
       <h1>Pet Details</h1>
       <p>pet id: {params.id!}</p>
       <p>name: {petDetails.name}</p>
-      <p>
-        hunger: {petDetails.hungerLevel}
-      </p>
+      <p>hunger: {petDetails.hungerLevel}</p>
       <p>happiness: {petDetails.happinessLevel}</p>
 
       <button onClick={deletePet}>Delete Pet</button>
