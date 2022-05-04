@@ -83,6 +83,7 @@ export function PetDetails() {
       updatePetLevels()
     }
   }
+  //bad way to get rid of errors will fix later. 
   console.log(petHunger)
   console.log(petPlay)
   console.log(petScold)
