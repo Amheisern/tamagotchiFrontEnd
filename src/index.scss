@@ -1,23 +1,77 @@
 :root {
   font: 16px / 1 sans-serif;
 
-  // SDG brand colors
-  --asphalt: #2f3737;
-  --bright-sky: #80ced2;
-  --lime: #b1d133;
-  --night-sky: #85577e;
-  --sand: #f7f0da;
-  --sea: #5a9090;
-  --sun: #d5562b;
-  --tangerine: #f99d1b;
+
+/* SCSS HEX */
+$midnight-green-eagle-green: #1a535cff;
+$medium-turquoise: #4ecdc4ff;
+$mint-cream: #f7fff7ff;
+$bittersweet: #ff6b6bff;
+$yellow-crayola: #ffe66dff;
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(0deg, #1a535cff, #4ecdc4ff, #f7fff7ff, #ff6b6bff, #ffe66dff);
+$gradient-right: linear-gradient(90deg, #1a535cff, #4ecdc4ff, #f7fff7ff, #ff6b6bff, #ffe66dff);
+$gradient-bottom: linear-gradient(180deg, #1a535cff, #4ecdc4ff, #f7fff7ff, #ff6b6bff, #ffe66dff);
+$gradient-left: linear-gradient(270deg, #1a535cff, #4ecdc4ff, #f7fff7ff, #ff6b6bff, #ffe66dff);
+$gradient-top-right: linear-gradient(45deg, #1a535cff, #4ecdc4ff, #f7fff7ff, #ff6b6bff, #ffe66dff);
+$gradient-bottom-right: linear-gradient(135deg, #1a535cff, #4ecdc4ff, #f7fff7ff, #ff6b6bff, #ffe66dff);
+$gradient-top-left: linear-gradient(225deg, #1a535cff, #4ecdc4ff, #f7fff7ff, #ff6b6bff, #ffe66dff);
+$gradient-bottom-left: linear-gradient(315deg, #1a535cff, #4ecdc4ff, #f7fff7ff, #ff6b6bff, #ffe66dff);
+$gradient-radial: radial-gradient(#1a535cff, #4ecdc4ff, #f7fff7ff, #ff6b6bff, #ffe66dff);
 }
 
 html {
   height: 100%;
+  box-sizing: border-box;
 }
 
 body {
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   min-height: 100%;
   padding: 5%;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+ list-style: none;
+}
+/* Float four columns side by side */
+.column {
+  width: fit-content;
+block-size: fit-content;
+  float: left;
+  padding: 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
 }

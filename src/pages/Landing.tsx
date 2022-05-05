@@ -37,20 +37,22 @@ console.log('setPetList', setPetList)
     <>
       <div>
         <h1>List of Pets</h1>
-        <h2>
+        <div className="row">
           {petList.map(function (pet) {
             return (
-            <>
-            <Link to={`./Pets/${pet.id}`}><li>{pet.name}</li></Link>
-              <ul>
-              <li>{pet.birthday}</li>
-              <li>{pet.hungerLevel}</li>
-              <li>{pet.happinessLevel}</li>
-           </ul> 
-           </>
+              <>
+                <ul className="column">
+                <Link to={`./Pets/${pet.id}`}>
+                  <li className="card">{pet.name}</li>
+                </Link>
+                  <li className="card">{pet.birthday}</li>
+                  <li className="card">{pet.hungerLevel}</li>
+                  <li className='card'>{pet.happinessLevel}</li>
+                </ul>
+              </>
             )
           })}
-        </h2>
+        </div>
         <form
           onSubmit={function (event) {
             event.preventDefault()
