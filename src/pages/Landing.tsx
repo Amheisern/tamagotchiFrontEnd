@@ -37,24 +37,26 @@ export function Landing() {
       <div>
         <h2>List of Pets</h2>
         <div className="row">
-          {petList.map(function (pet) {
-            return (
-              <>
-                <ul className="column">
-                  <Link to={`./Pets/${pet.id}`}>
-                    <li className="card">{pet.name}</li>
-                  </Link>
-                  <li className="card">
-                    Birthday: ({new Date(pet.birthday).toLocaleDateString()})
-                  </li>
-                  <li className="card">Hunger Level: ({pet.hungerLevel})</li>
-                  <li className="card">
-                    Happiness Level: ({pet.happinessLevel})
-                  </li>
-                </ul>
-              </>
-            )
-          })}
+          {petList
+            .sort((a, b) => (a.birthday < b.birthday ? 1 : 0))
+            .map(function (pet) {
+              return (
+                <>
+                  <ul className="column">
+                    <Link to={`./Pets/${pet.id}`}>
+                      <li className="card">{pet.name}</li>
+                    </Link>
+                    <li className="card">
+                      Birthday: ({new Date(pet.birthday).toLocaleDateString()})
+                    </li>
+                    <li className="card">Hunger Level: ({pet.hungerLevel})</li>
+                    <li className="card">
+                      Happiness Level: ({pet.happinessLevel})
+                    </li>
+                  </ul>
+                </>
+              )
+            })}
         </div>
         <form
           onSubmit={function (event) {

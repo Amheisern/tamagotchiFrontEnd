@@ -24,6 +24,7 @@ $gradient-radial: radial-gradient(#1a535cff, #4ecdc4ff, #f7fff7ff, #ff6b6bff, #f
 html {
   height: 100%;
   box-sizing: border-box;
+  
 }
 
 body {
@@ -31,7 +32,9 @@ body {
   margin: 0;
   min-height: 100%;
   padding: 5%;
+  background-color: #4ecdc4ff
 }
+
 h2 {
   font-size: 1.5em;
   font-weight: bold;
@@ -50,7 +53,6 @@ li {
  list-style: none;
 }
 a {
-  
   color: #1a535cff;
   padding: 1em 1.5em;
   position: relative;
@@ -79,6 +81,11 @@ input[type=text] {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+img {
+  width: 100%;
+  height: auto;
+  background-color: #4ecdc4ff
 }
 /* Float four columns side by side */
 .column {

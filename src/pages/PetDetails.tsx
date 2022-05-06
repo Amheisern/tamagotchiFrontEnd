@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { PetType } from '../App'
+import image1 from '../images/bunny.svg'
 
 export function PetDetails() {
   const history = useNavigate()
@@ -20,6 +21,7 @@ export function PetDetails() {
   const [petHunger, setPetHunger] = useState<number>()
   const [petPlay, setPetPlay] = useState<number>()
   const [petScold, setPetScold] = useState<number>()
+
 
   useEffect(() => {
     async function fetchPetDetails() {
@@ -94,7 +96,10 @@ export function PetDetails() {
 
   return (
     <div>
-      <h1>Pet Details</h1>
+      <h2>Pet Details</h2>
+      <div>
+        <img src={image1} alt="pet" />
+      </div>
       <p>pet id: {params.id!}</p>
       <p>name: {petDetails.name}</p>
       <p>hunger: {petDetails.hungerLevel}</p>
