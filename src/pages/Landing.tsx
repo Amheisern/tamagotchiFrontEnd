@@ -35,7 +35,22 @@ export function Landing() {
   return (
     <>
       <div>
-        <h2>List of Pets</h2>
+        <h2>List of Pets</h2> 
+        <form
+          onSubmit={function (event) {
+            event.preventDefault()
+            handleCreateNewPet()
+          }}
+        >
+          <input
+            type="text"
+            placeholder="Want to add a pet?"
+            value={newPetName}
+            onChange={function (event) {
+              setNewPetName(event.target.value)
+            }}
+          />
+        </form>
         <div className="row">
           {petList
             .sort((a, b) => (a.birthday < b.birthday ? 1 : 0))
@@ -58,21 +73,7 @@ export function Landing() {
               )
             })}
         </div>
-        <form
-          onSubmit={function (event) {
-            event.preventDefault()
-            handleCreateNewPet()
-          }}
-        >
-          <input
-            type="text"
-            placeholder="Want to add a pet?"
-            value={newPetName}
-            onChange={function (event) {
-              setNewPetName(event.target.value)
-            }}
-          />
-        </form>
+       
       </div>
     </>
   )

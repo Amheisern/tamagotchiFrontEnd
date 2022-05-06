@@ -32,14 +32,15 @@ body {
   margin: 0;
   min-height: 100%;
   padding: 5%;
-  background-color: #4ecdc4ff
+  background-color: #4ecdc4ff;
+  background-image: '../images/bunny.svg';
 }
 
 h2 {
   font-size: 1.5em;
   font-weight: bold;
   margin: 0;
-  padding: 0;
+  padding-bottom: .5em;
   color: #1a535cff;
 }
 ul {
@@ -70,14 +71,15 @@ a:active {
 }
 
 input[type=text] {
-
+  display: block;
+  text-align: center;
   width: 50%;
   background-color: #ff6b6bff;
   color: #1a535cff;
   padding: 1em 1.5em;
   position: relative;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin: auto;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -86,6 +88,24 @@ img {
   width: 100%;
   height: auto;
   background-color: #4ecdc4ff
+}
+p{
+  color: #1a535cff;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0;
+  padding-bottom: .5em;
+  text-transform: capitalize;
+}
+
+button {
+  background-color: #ff6b6bff;
+  border-radius: 10px;
+  color: #1a535cff;
+  padding: 1em 1.5em;
+  position: relative;
+  text-decoration: none;
+  text-transform: capitalize;
 }
 /* Float four columns side by side */
 .column {
